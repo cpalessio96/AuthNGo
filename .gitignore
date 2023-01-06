@@ -1,0 +1,9 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+# Folder create by docker
+postgres-data/
+.env

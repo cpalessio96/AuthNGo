@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  auth-service:
+    build:
+      context: ./
+      dockerfile: ./authentication-service.dockerfile
+    restart: always
+    ports:
+      - "8080:80"
+    deploy:
+      mode: replicated
+      replicas: 1
+    env_file:
+      - .env
+
+  postgres:
+    image: 'postgres:14.2'
+    ports:
+      - "5432:5432"
+    deploy:
+      mode: replicated
+      replicas: 1
+    env_file:
+      - .env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data:z
